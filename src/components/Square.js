@@ -13,7 +13,7 @@ class Square extends Component{
     return(
       <React.Fragment>
         <div 
-        disabled = {this.props.disabled} 
+        disabled = {this.props.clickDisabled} 
         id="square"
         onClick={ this.handleClick}
         >
