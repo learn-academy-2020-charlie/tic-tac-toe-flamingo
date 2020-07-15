@@ -80,9 +80,7 @@ class App extends Component{
     } 
 
   }
-
-
-
+  
 
   render(){
     let square = this.state.squares.map((value, index) => {
@@ -100,9 +98,11 @@ class App extends Component{
         <div id = "board">
           {square}
         </div>
+
         <Message 
           gameResult = { this.gameResult }
         />
+
       </React.Fragment>
     )
   }
