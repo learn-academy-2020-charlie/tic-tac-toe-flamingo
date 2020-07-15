@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Square from './components/Square'
+import Message from './components/Message'
 import './App.css'
 
 class App extends Component{
@@ -8,7 +9,6 @@ class App extends Component{
     this.state = {
       squares: ["", "", "", "", "", "", "", "", ""],
       turns: 0, 
-      //disabled: false
     }
   }
 
@@ -65,18 +65,22 @@ class App extends Component{
 
 
   }
+
   gameResult = () => {
-    let {turns, squares, disabled} = this.state
-      //then we check for a winner
-      let winner = this.checkWinner()
-      // if winner is and X or O
-      if (winner) {
-        //this.setState({disabled: true})
-        return ( winner + ` is the winner!`) 
-      } else if (turns === squares.length) {
-        return "Cats Game!"
-  } 
-}
+    let {turns, squares} = this.state
+    //then we check for a winner
+    let winner = this.checkWinner()
+    // if winner is and X or O
+    if (winner === "X") {
+      this.setState({clickDisabled: true})
+      return ( winner + ` is the winner!`) 
+
+    } else if (turns === squares.length) {
+      return "Cats Game!"
+    } 
+
+  }
+  
 
   render(){
     let square = this.state.squares.map((value, index) => {
@@ -84,7 +88,7 @@ class App extends Component{
         <Square
           value={ value }
           index={ index }
-          handleLocation={ this.handleLocation}
+          handleLocation={ this.handleLocation }
         />
       )
     })
@@ -94,7 +98,11 @@ class App extends Component{
         <div id = "board">
           {square}
         </div>
-        <h2> {this.gameResult} </h2>
+
+        <Message 
+          gameResult = { this.gameResult }
+        />
+
       </React.Fragment>
     )
   }
