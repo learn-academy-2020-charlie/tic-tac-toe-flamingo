@@ -8,7 +8,7 @@ class App extends Component{
     this.state = {
       squares: ["", "", "", "", "", "", "", "", ""],
       turns: 0, 
-      disabled: false
+      //disabled: false
     }
   }
 
@@ -66,15 +66,14 @@ class App extends Component{
 
   }
   gameResult = () => {
-    let {turns, squares} = this.state
+    let {turns, squares, disabled} = this.state
       //then we check for a winner
       let winner = this.checkWinner()
       // if winner is and X or O
       if (winner) {
-        this.setState({disabled: true})
+        //this.setState({disabled: true})
         return ( winner + ` is the winner!`) 
       } else if (turns === squares.length) {
-        this.setState({disabled: true})
         return "Cats Game!"
   } 
 }
@@ -89,14 +88,13 @@ class App extends Component{
         />
       )
     })
-    let message = this.gameResult()
     return(
       <React.Fragment>
         <h1>Tic Tac Toe</h1>
         <div id = "board">
           {square}
         </div>
-        <h2> {message} </h2>
+        <h2> {this.gameResult} </h2>
       </React.Fragment>
     )
   }
