@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 class Square extends Component{
+    constructor(props) {
+      super(props)
+    }
 
   handleClick = () => {
     this.props.handleLocation(this.props.index)
@@ -10,6 +13,7 @@ class Square extends Component{
     return(
       <React.Fragment>
         <div 
+        disabled = {this.props.disabled} 
         id="square"
         onClick={ this.handleClick}
         >
