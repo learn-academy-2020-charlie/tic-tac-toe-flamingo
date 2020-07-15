@@ -8,7 +8,7 @@ class App extends Component{
     super(props)
     this.state = {
       squares: ["", "", "", "", "", "", "", "", ""],
-      turns: 0, 
+      turns: 0,
     }
   }
 
@@ -19,6 +19,8 @@ class App extends Component{
     if (squares[indexLocation] === 'X' || squares[indexLocation] === 'O') {
       // send an alert
       alert("Already selected!")
+    } else if(turns == 9){
+      alert ("Game Over!")
     } else {
       //and if not, then 
       //if turn is even, update squares with an 'X'
@@ -30,6 +32,7 @@ class App extends Component{
       }
       // update turn to +1
       turns += 1
+      //let winnerExists = this.checkWinner////////////////////
       // update the square with an X or O
       this.setState({squares: squares,  turns: turns})
       //if gameResult !== null then stop the game
@@ -56,6 +59,7 @@ class App extends Component{
       const [a, b, c] = winningCombos[i];
       // checking if the winning combos all have the same value (either X or O)
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        
         let winner = squares[a]
         return winner; // this will return either "X" or "O" 
       }
@@ -71,14 +75,14 @@ class App extends Component{
     //then we check for a winner
     let winner = this.checkWinner()
     // if winner is and X or O
-    if (winner === "X") {
-      this.setState({clickDisabled: true})
+    if (winner === "X" || winner === "O") {
+      
       return ( winner + ` is the winner!`) 
 
     } else if (turns === squares.length) {
       return "Cats Game!"
     } 
-
+    
   }
   
 
