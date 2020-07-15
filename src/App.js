@@ -9,7 +9,6 @@ class App extends Component{
     this.state = {
       squares: ["", "", "", "", "", "", "", "", ""],
       turns: 0, 
-      clickDisabled: false
     }
   }
 
@@ -66,13 +65,14 @@ class App extends Component{
 
 
   }
+
   gameResult = () => {
     let {turns, squares} = this.state
     //then we check for a winner
     let winner = this.checkWinner()
     // if winner is and X or O
-    if (winner) {
-      //this.setState({clickDisabled: true})
+    if (winner === "X") {
+      this.setState({clickDisabled: true})
       return ( winner + ` is the winner!`) 
 
     } else if (turns === squares.length) {
@@ -80,6 +80,9 @@ class App extends Component{
     } 
 
   }
+
+
+
 
   render(){
     let square = this.state.squares.map((value, index) => {
@@ -98,7 +101,7 @@ class App extends Component{
           {square}
         </div>
         <Message 
-            gameResult = { this.gameResult }
+          gameResult = { this.gameResult }
         />
       </React.Fragment>
     )
