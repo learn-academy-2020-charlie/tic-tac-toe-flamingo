@@ -9,8 +9,8 @@ class Message extends Component{
   render(){
     return(
       <React.Fragment>
-        <div> 
-            <h2> {this.props.gameResult()} </h2> 
+        <div id = "message">
+            <h2> {this.props.gameResult()} </h2>
         </div>
       </React.Fragment>
     )

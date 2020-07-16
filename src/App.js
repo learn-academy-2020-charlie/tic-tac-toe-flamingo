@@ -23,7 +23,7 @@ class App extends Component{
     } else if(squares[indexLocation] === 'X' || squares[indexLocation] === 'O'){
       alert("Already selected!")
     } else {
-      //and if not, then 
+      //and if not, then
       //if turn is even, update squares with an 'X'
       if (turns % 2 === 0){
         squares[indexLocation] = 'X'
@@ -39,13 +39,13 @@ class App extends Component{
         turns = 9
       }
       // update the square with an X or O
-      this.setState({squares: squares,  turns: turns})     
-    }  
+      this.setState({squares: squares,  turns: turns})
+    }
   }
 
   checkWinner = () => {
     let { squares } = this.state
-    // list the winning index combinations 
+    // list the winning index combinations
     const winningCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -62,9 +62,9 @@ class App extends Component{
       const [a, b, c] = winningCombos[i];
       // checking if the winning combos all have the same value (either X or O)
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        
+
         let winner = squares[a]
-        return winner; // this will return either "X" or "O" 
+        return winner; // this will return either "X" or "O"
       }
     }
     // if no winning combos, return null
@@ -79,13 +79,13 @@ class App extends Component{
     let winner = this.checkWinner()
     // if winner is and X or O
     if (winner === "X" || winner === "O") {
-      
-      return ( winner + ` is the winner!`) 
+
+      return ( winner + ` is the winner!`)
 
     } else if (turns === squares.length) {
       return "Cats Game!"
-    } 
-    
+    }
+
   }
 
   restartGame = () => {
@@ -93,7 +93,7 @@ class App extends Component{
     let turns2 = 0
       this.setState({squares: squares2, turns: turns2})
   }
-  
+
 
   render(){
     let square = this.state.squares.map((value, index) => {
@@ -114,7 +114,7 @@ class App extends Component{
         <Restart
         restartGame = {this.restartGame}
         />
-        <Message 
+        <Message
           gameResult = { this.gameResult }
         />
 

@@ -9,9 +9,11 @@ class Restart extends Component{
     render(){
         return(
             <React.Fragment>
-                <button onClick = {this.restart}>
-                    Restart!
-                </button>
+            <div id = "button1">
+            <button onClick = {this.restart}>
+            Restart!
+            </button>
+            </div>
             </React.Fragment>
         )
     }
