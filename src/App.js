@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Square from './components/Square'
 import Message from './components/Message'
 import './App.css'
+import Restart from './components/Restart'
 
 class App extends Component{
   constructor(props){
@@ -86,6 +87,12 @@ class App extends Component{
     } 
     
   }
+
+  restartGame = () => {
+    let squares2 = ["", "", "", "", "", "", "", "", ""]
+    let turns2 = 0
+      this.setState({squares: squares2, turns: turns2})
+  }
   
 
   render(){
@@ -104,7 +111,9 @@ class App extends Component{
         <div id = "board">
           {square}
         </div>
-
+        <Restart
+        restartGame = {this.restartGame}
+        />
         <Message 
           gameResult = { this.gameResult }
         />
