@@ -8,7 +8,7 @@ class App extends Component{
     super(props)
     this.state = {
       squares: ["", "", "", "", "", "", "", "", ""],
-      turns: 0,
+      turns: 0
     }
   }
 
@@ -16,11 +16,11 @@ class App extends Component{
   handleLocation = (indexLocation) => {
     let { turns, squares } = this.state
     // if index location aready has and X or O
-    if (squares[indexLocation] === 'X' || squares[indexLocation] === 'O') {
+    if (turns === 9) {
       // send an alert
-      alert("Already selected!")
-    } else if(turns == 9){
       alert ("Game Over!")
+    } else if(squares[indexLocation] === 'X' || squares[indexLocation] === 'O'){
+      alert("Already selected!")
     } else {
       //and if not, then 
       //if turn is even, update squares with an 'X'
@@ -32,11 +32,13 @@ class App extends Component{
       }
       // update turn to +1
       turns += 1
-      //let winnerExists = this.checkWinner////////////////////
+
+      let winnerExists = this.checkWinner()
+      if (winnerExists =="X" || winnerExists == "O"){
+        turns = 9
+      }
       // update the square with an X or O
-      this.setState({squares: squares,  turns: turns})
-      //if gameResult !== null then stop the game
-     
+      this.setState({squares: squares,  turns: turns})     
     }  
   }
 
